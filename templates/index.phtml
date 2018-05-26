@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Simple Vehicles Records</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <div class="fluid-container">
+            <div class="row">
+                <!-- Table -->
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="">Select Unit</label>
+                                <select name="" id="filter-unit" class="form-control">
+                                    <option value="-1">Saved Unit</option>
+                                    <option value="0">CC</option>
+                                    <option value="1">CID</option>
+                                    <option value="2">L</option>  
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table id="vehicles-table" class="table table-hover">
+                                    <thead class="thead-dark">
+                                        <th>Name</th>
+                                        <th>ED</th>
+                                        <th>EP</th>
+                                        <th>Price</th>
+                                        <th>Location</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php if($vehicles) : ?>
+                                            <?php foreach ($vehicles as $key => $value) : ?>
+                                                <tr>
+                                                    <td><?= $value['name'] ?></td>
+                                                    <td><?= $value['ed_value'] ?> <?= $value['ed_unit'] ?></td>
+                                                    <td><?= $value['ep_value'] ?> <?= $value['ep_unit'] ?></td>
+                                                    <td><?= $value['price'] ?></td>
+                                                    <td><?= $value['location'] ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <tr>
+                                                 <td colspan="5">No Records Found</td>
+                                             </tr> 
+                                        <?php endif;?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="col-3 shadow p-3 mb-5 rounded bg-light">
+                    <h2>Register Vehicle</h2>
+                    <form id="register-form">
+                        <div class="row">
+                            <div class="col">
+                                <label for="">Name: </label>
+                                <input type="text" id="name" name="name" class="form-control" required="true">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="">ED</label>
+                                <input type="text" id="ed_value" name="ed_value" class="form-control decimal" placeholder="0.00" required="true">
+                            </div>
+                            <div class="col">
+                                <label for="">&nbsp;</label>
+                                <select name="ed_unit" id="ed_unit" class="form-control">
+                                    <option value="0">CC</option>
+                                    <option value="1">CID</option>
+                                    <option value="2">L</option>  
+                                </select>                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="">EP</label>
+                                <input type="text" id="ep_value" name="ep_value" class="form-control decimal" placeholder="0.00" required="true">
+                            </div>
+                            <div class="col">
+                                <label for="">&nbsp;</label>
+                                <select name="ep_unit" id="ep_unit" class="form-control">
+                                    <option value="0">HP</option>
+                                    <option value="1">KW</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="">Price</label>
+                                <input type="text" id="price" name="price" class="form-control decimal" placeholder="0.00" required="true">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="">Location</label>
+                                <input type="text" id="location" name="location" class="form-control" required="true">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+</html>
